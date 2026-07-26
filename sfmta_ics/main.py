@@ -13,11 +13,12 @@ deliberately allowed to propagate as tracebacks.
 from __future__ import annotations
 
 import sys
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
+from zoneinfo import ZoneInfo
 
 from . import build as build_mod
 from . import state as state_mod
-from .config import HEARTBEAT_PATH, ICS_PATH, PAGES_HOSTNAME, STATE_PATH
+from .config import HEARTBEAT_PATH, ICS_PATH, PAGES_HOSTNAME, STATE_PATH, TIMEZONE_ID
 from .errors import AUTH_REMEDY, AuthError, FatalError
 from .extract import extract_effective_date, extract_table_text
 from .fetch import fetch_page
@@ -61,6 +62,11 @@ def validate_ics(text: str, expected_uids: list[str]) -> None:
                 )
 
 
+def today_pacific() -> date:
+    """Today's date at the venues, which is what decides past from future."""
+    return datetime.now(ZoneInfo(TIMEZONE_ID)).date()
+
+
 def run() -> int:
     run_time = datetime.now(timezone.utc).replace(tzinfo=None)
 
@@ -71,9 +77,20 @@ def run() -> int:
     table_text = extract_table_text(html)
 
     rows = parse_rows(table_text)
-    events = validate_rows(rows, effective)
-    check_row_count(len(events), previous.row_count)
+    scraped = validate_rows(rows, effective)
+    check_row_count(len(scraped), previous.row_count)
 
+    # SFMTA publishes a rolling window, so finished dates fall off the page.
+    # Re-emit the past ones from the archive; let future removals disappear,
+    # since those are cancellations.
+    today = today_pacific()
+    scraped_uids = {event.uid_local for event in scraped}
+    archived = state_mod.archived_events(previous, scraped_uids, today)
+
+    events = sorted(archived + scraped, key=lambda e: (e.event_date, e.start_hour, e.venue))
+
+    # Archived events reconstruct to exactly their own stored record, so both
+    # helpers below return their frozen sequence and timestamp untouched.
     sequences = state_mod.assign_sequences(events, previous)
     last_modified = state_mod.assign_last_modified(events, sequences, previous, run_time)
 
@@ -89,7 +106,9 @@ def run() -> int:
     ICS_PATH.parent.mkdir(parents=True, exist_ok=True)
     ICS_PATH.write_text(ics, encoding="utf-8", newline="")
 
-    new_state = state_mod.build_state(events, sequences, last_modified, run_time)
+    new_state = state_mod.build_state(
+        events, sequences, last_modified, run_time, scraped_count=len(scraped)
+    )
     state_mod.save_state(new_state, STATE_PATH)
 
     HEARTBEAT_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -97,7 +116,8 @@ def run() -> int:
 
     changed = sum(1 for event in events if sequences[event.uid_local] > 0)
     print(
-        f"OK: effective {effective.isoformat()}, {len(events)} events "
+        f"OK: effective {effective.isoformat()}, {len(scraped)} scraped + "
+        f"{len(archived)} archived = {len(events)} events "
         f"({changed} with a non-zero SEQUENCE), written to {ICS_PATH}."
     )
     return 0

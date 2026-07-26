@@ -44,6 +44,14 @@ HOURS_WINDOWS = {
     "6 p.m. to 10 p.m.": (18, 22),
 }
 
+# (start hour, end hour) -> the string as SFMTA writes it. Used to re-emit an
+# archived event whose state record predates the stored hours text.
+HOURS_TEXT = {
+    (12, 18): "Noon to 6 P.M.",
+    (15, 22): "3 P.M. to 10 P.M.",
+    (18, 22): "6 P.M. to 10 P.M.",
+}
+
 # --- Validation thresholds --------------------------------------------------
 
 # A run whose row count fell by more than this fraction of the last successful

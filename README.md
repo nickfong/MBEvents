@@ -20,7 +20,7 @@ The times are meter enforcement windows, not event start times.
 | `parse.py` | Claude Code CLI, headless. Transcribes the table text to JSON. |
 | `validate.py` | Year inference, venue and time whitelists, sanity windows. |
 | `build.py` | Render RFC 5545 with a real VTIMEZONE. |
-| `state.py` | SEQUENCE bookkeeping. |
+| `state.py` | SEQUENCE bookkeeping and the past-event archive. |
 | `main.py` | Orders the above. |
 
 The model only transcribes the table. It does not infer years, interpret times,
@@ -71,17 +71,40 @@ window turns the build red; add it to `HOURS_WINDOWS` in `sfmta_ics/config.py`.
 
 ### SEQUENCE
 
-`state/events.json` records the start, end and `SEQUENCE` each UID was last
-published with. A UID whose times changed gets its sequence incremented,
-unchanged events keep theirs, new events start at 0. Without this, clients
-ignore revised hours.
+`state/events.json` records the start, end, venue, hours, `SEQUENCE` and
+`LAST-MODIFIED` each UID was last published with. A UID whose times changed gets
+its sequence incremented, unchanged events keep theirs, new events start at 0.
+Without this, clients ignore revised hours.
 
 UIDs are `{YYYYMMDD}-{venue}@{pages-hostname}`, e.g.
 `20260710-oracle@nickfong.github.io`. The venue is part of the key because the
 same date appears twice when both venues have events.
 
-Events that disappear from the page are dropped from the republished file and
-pruned from the state.
+### The archive
+
+SFMTA publishes a rolling window, so finished dates fall off the page. Building
+the ICS purely from the page would delete that history out of subscribers'
+calendars as the window advances. So a UID that has left the page is handled by
+its date:
+
+- **past** — archived. Re-emitted from the state file forever, frozen at its
+  last published values. A retroactive SFMTA edit to a finished date cannot
+  rewrite history, because archived events are never re-derived from the page.
+- **future** — dropped. That is a cancellation or a reschedule, and it should
+  leave the calendar.
+
+"Past" means strictly before today in `America/Los_Angeles`. Today's events
+still mirror the page.
+
+The archive is unbounded. Growth is roughly 100 KB/year at ~150 events; worth
+revisiting around 1 MB, since clients re-download the whole file each refresh.
+
+One interaction to know about: the 40% row-count guard compares **scraped** rows
+only, never the published total, so a growing archive can never mask a scrape
+that collapsed. The trade-off is that a republication dropping more than 40% of
+the rows halts the run even when the loss is legitimate rolloff. The guard
+cannot tell rolloff from a broken extraction, and the conservative choice is to
+stop. Recovery is the manual `row_count` edit described in the failure table.
 
 ### Heartbeat
 
@@ -147,7 +170,7 @@ was.
 | `venue '...' is not one of ['Chase', 'Oracle']` | Third venue appeared. | Add it to `VENUES` if wanted. |
 | `the month index decreased for a second time` | Table is no longer a single sub-twelve-month schedule in date order. | Check the page before trusting the inference. |
 | `inferred date ... falls outside the sane window` | Effective date and rows disagree. | Same. |
-| `Row count fell from X to Y` | Row count dropped over 40%. Usually a broken extraction. | If the schedule really shrank, lower `row_count` in `state/events.json` and re-run. The state file only updates on success, so re-running alone will keep failing. |
+| `Row count fell from X to Y` | Scraped rows dropped over 40%. Usually a broken extraction, but a large legitimate rolloff can do it too. | If the schedule really shrank, lower `row_count` in `state/events.json` and re-run. The state file only updates on success, so re-running alone will keep failing. |
 | `state/events.json exists but is not valid JSON` | Corrupt state. | Fix or delete it. Deleting resets every `SEQUENCE` to 0, so in-flight revisions may not reach subscribers. |
 
 The published calendar is untouched in every case.

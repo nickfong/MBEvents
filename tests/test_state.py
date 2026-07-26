@@ -101,7 +101,7 @@ def test_vanished_events_are_pruned_from_the_state():
     )
     sequences = assign_sequences([kept], previous)
     stamps = assign_last_modified([kept], sequences, previous, RUN_TIME)
-    new_state = build_state([kept], sequences, stamps, RUN_TIME)
+    new_state = build_state([kept], sequences, stamps, RUN_TIME, scraped_count=1)
 
     assert set(new_state.events) == {"20260608-oracle"}
     assert new_state.row_count == 1
@@ -113,7 +113,7 @@ def test_state_round_trips_through_disk(tmp_path):
     stamps = assign_last_modified([event], sequences, State.empty(), RUN_TIME)
     path = tmp_path / "events.json"
 
-    save_state(build_state([event], sequences, stamps, RUN_TIME), path)
+    save_state(build_state([event], sequences, stamps, RUN_TIME, scraped_count=1), path)
     reloaded = load_state(path)
 
     assert reloaded.row_count == 1
