@@ -1,0 +1,97 @@
+name: Update SFMTA parking calendar
+
+on:
+  schedule:
+    # 13:10 UTC daily -- early morning Pacific, comfortably after SFMTA would
+    # publish a revision, and off the top of the hour to avoid the busiest
+    # GitHub Actions scheduling slot.
+    - cron: "10 13 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-calendar
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install the Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Run the tests
+        run: pytest -q
+
+      - name: Build the calendar
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          PAGES_HOSTNAME: ${{ github.repository_owner }}.github.io
+        run: |
+          # ANTHROPIC_API_KEY takes precedence over the OAuth token if it is
+          # present, and would silently bill a different account. Make certain
+          # it cannot be set, whatever the runner or the org config provides.
+          unset ANTHROPIC_API_KEY
+          unset ANTHROPIC_AUTH_TOKEN
+          python -m sfmta_ics.main
+
+      - name: Commit the calendar and the heartbeat
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # -N makes an untracked ICS (the very first run) visible to git diff.
+          git add -N docs/sfmta-events.ics
+
+          if git diff --quiet -- docs/sfmta-events.ics; then
+            message="chore: heartbeat $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          else
+            message="chore: update parking calendar $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          fi
+
+          # The heartbeat is added unconditionally. GitHub disables scheduled
+          # workflows after 60 days without repository activity, and workflow
+          # runs do not count -- only commits do. A daily run that commits
+          # nothing would be switched off in the offseason.
+          git add state/last-run.txt state/events.json docs/sfmta-events.ics
+
+          if git diff --cached --quiet; then
+            echo "Nothing staged at all -- this should not happen, the heartbeat always changes."
+            exit 1
+          fi
+
+          git commit -m "$message"
+
+      - name: Push
+        run: |
+          for attempt in 1 2 3 4 5; do
+            if git push; then
+              exit 0
+            fi
+            echo "Push failed (attempt $attempt); refreshing and retrying."
+            sleep $((2 ** attempt))
+            git pull --rebase --autostash || true
+          done
+          echo "Could not push after 5 attempts." >&2
+          exit 1

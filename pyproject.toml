@@ -1,0 +1,16 @@
+[project]
+name = "sfmta-parking-ics"
+version = "1.0.0"
+description = "Publish the SFMTA special event parking schedule as a subscribable ICS feed."
+requires-python = ">=3.11"
+dependencies = [
+    "requests>=2.32",
+    "beautifulsoup4>=4.12",
+    "icalendar>=6.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

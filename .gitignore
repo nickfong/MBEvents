@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+.DS_Store
+
+# docs/sfmta-events.ics and state/ ARE committed on purpose:
+# the ICS is the published artefact, and the state file carries the SEQUENCE
+# numbers that make calendar clients pick up revisions.
