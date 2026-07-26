@@ -1,0 +1,882 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//nickfong/mbevents//SFMTA Special Event Parking//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:SFMTA Special Event Parking
+X-WR-CALDESC:Elevated parking meter rates near Oracle Park and Chase Center
+  during large events. Meter enforcement windows\, not event times. Last su
+ ccessful scrape: 2026-07-26 16:08 UTC. Source: https://www.sfmta.com/notic
+ es/current-special-event-parking-regulations-schedule
+X-WR-TIMEZONE:America/Los_Angeles
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VTIMEZONE
+TZID:America/Los_Angeles
+X-LIC-LOCATION:America/Los_Angeles
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+TZNAME:PDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+TZNAME:PST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:20260724-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260724T180000
+DTEND;TZID=America/Los_Angeles:20260724T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260725-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260725T120000
+DTEND;TZID=America/Los_Angeles:20260725T180000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect Noon to 6 P.M. 
+ near Oracle Park.\n\nThis is the meter enforcement window\, not the event 
+ start time.\n\nDates and rate hours are subject to change by SFMTA.\nSourc
+ e: https://www.sfmta.com/notices/current-special-event-parking-regulations
+ -schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260726-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260726T120000
+DTEND;TZID=America/Los_Angeles:20260726T180000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect Noon to 6 P.M. 
+ near Oracle Park.\n\nThis is the meter enforcement window\, not the event 
+ start time.\n\nDates and rate hours are subject to change by SFMTA.\nSourc
+ e: https://www.sfmta.com/notices/current-special-event-parking-regulations
+ -schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260727-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260727T180000
+DTEND;TZID=America/Los_Angeles:20260727T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260728-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260728T180000
+DTEND;TZID=America/Los_Angeles:20260728T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260729-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260729T120000
+DTEND;TZID=America/Los_Angeles:20260729T180000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect Noon to 6 P.M. 
+ near Oracle Park.\n\nThis is the meter enforcement window\, not the event 
+ start time.\n\nDates and rate hours are subject to change by SFMTA.\nSourc
+ e: https://www.sfmta.com/notices/current-special-event-parking-regulations
+ -schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260730-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260730T180000
+DTEND;TZID=America/Los_Angeles:20260730T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260731-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260731T180000
+DTEND;TZID=America/Los_Angeles:20260731T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260801-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260801T150000
+DTEND;TZID=America/Los_Angeles:20260801T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 3 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260802-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260802T120000
+DTEND;TZID=America/Los_Angeles:20260802T180000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect Noon to 6 P.M. 
+ near Oracle Park.\n\nThis is the meter enforcement window\, not the event 
+ start time.\n\nDates and rate hours are subject to change by SFMTA.\nSourc
+ e: https://www.sfmta.com/notices/current-special-event-parking-regulations
+ -schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260803-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260803T180000
+DTEND;TZID=America/Los_Angeles:20260803T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260804-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260804T180000
+DTEND;TZID=America/Los_Angeles:20260804T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260805-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260805T180000
+DTEND;TZID=America/Los_Angeles:20260805T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260807-chase@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260807T180000
+DTEND;TZID=America/Los_Angeles:20260807T220000
+SUMMARY:Special event meter rates: Chase Center
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Chase Center.\n\nThis is the meter enforcement window\, not the ev
+ ent start time.\n\nDates and rate hours are subject to change by SFMTA.\nS
+ ource: https://www.sfmta.com/notices/current-special-event-parking-regulat
+ ions-schedule
+LOCATION:Chase Center
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260808-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260808T150000
+DTEND;TZID=America/Los_Angeles:20260808T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 3 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260809-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260809T120000
+DTEND;TZID=America/Los_Angeles:20260809T180000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect Noon to 6 P.M. 
+ near Oracle Park.\n\nThis is the meter enforcement window\, not the event 
+ start time.\n\nDates and rate hours are subject to change by SFMTA.\nSourc
+ e: https://www.sfmta.com/notices/current-special-event-parking-regulations
+ -schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260810-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260810T180000
+DTEND;TZID=America/Los_Angeles:20260810T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260811-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260811T180000
+DTEND;TZID=America/Los_Angeles:20260811T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260812-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260812T120000
+DTEND;TZID=America/Los_Angeles:20260812T180000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect Noon to 6 P.M. 
+ near Oracle Park.\n\nThis is the meter enforcement window\, not the event 
+ start time.\n\nDates and rate hours are subject to change by SFMTA.\nSourc
+ e: https://www.sfmta.com/notices/current-special-event-parking-regulations
+ -schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260814-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260814T180000
+DTEND;TZID=America/Los_Angeles:20260814T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260815-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260815T120000
+DTEND;TZID=America/Los_Angeles:20260815T180000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect Noon to 6 P.M. 
+ near Oracle Park.\n\nThis is the meter enforcement window\, not the event 
+ start time.\n\nDates and rate hours are subject to change by SFMTA.\nSourc
+ e: https://www.sfmta.com/notices/current-special-event-parking-regulations
+ -schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260816-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260816T120000
+DTEND;TZID=America/Los_Angeles:20260816T180000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect Noon to 6 P.M. 
+ near Oracle Park.\n\nThis is the meter enforcement window\, not the event 
+ start time.\n\nDates and rate hours are subject to change by SFMTA.\nSourc
+ e: https://www.sfmta.com/notices/current-special-event-parking-regulations
+ -schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260818-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260818T180000
+DTEND;TZID=America/Los_Angeles:20260818T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260819-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260819T180000
+DTEND;TZID=America/Los_Angeles:20260819T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260820-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260820T120000
+DTEND;TZID=America/Los_Angeles:20260820T180000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect Noon to 6 P.M. 
+ near Oracle Park.\n\nThis is the meter enforcement window\, not the event 
+ start time.\n\nDates and rate hours are subject to change by SFMTA.\nSourc
+ e: https://www.sfmta.com/notices/current-special-event-parking-regulations
+ -schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260821-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260821T180000
+DTEND;TZID=America/Los_Angeles:20260821T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260822-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260822T180000
+DTEND;TZID=America/Los_Angeles:20260822T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260823-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260823T150000
+DTEND;TZID=America/Los_Angeles:20260823T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 3 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260824-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260824T180000
+DTEND;TZID=America/Los_Angeles:20260824T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260825-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260825T180000
+DTEND;TZID=America/Los_Angeles:20260825T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260826-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260826T120000
+DTEND;TZID=America/Los_Angeles:20260826T180000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect Noon to 6 P.M. 
+ near Oracle Park.\n\nThis is the meter enforcement window\, not the event 
+ start time.\n\nDates and rate hours are subject to change by SFMTA.\nSourc
+ e: https://www.sfmta.com/notices/current-special-event-parking-regulations
+ -schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260827-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260827T180000
+DTEND;TZID=America/Los_Angeles:20260827T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260828-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260828T180000
+DTEND;TZID=America/Los_Angeles:20260828T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260829-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260829T180000
+DTEND;TZID=America/Los_Angeles:20260829T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260830-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260830T120000
+DTEND;TZID=America/Los_Angeles:20260830T180000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect Noon to 6 P.M. 
+ near Oracle Park.\n\nThis is the meter enforcement window\, not the event 
+ start time.\n\nDates and rate hours are subject to change by SFMTA.\nSourc
+ e: https://www.sfmta.com/notices/current-special-event-parking-regulations
+ -schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260901-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260901T180000
+DTEND;TZID=America/Los_Angeles:20260901T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260907-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260907T150000
+DTEND;TZID=America/Los_Angeles:20260907T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 3 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260908-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260908T180000
+DTEND;TZID=America/Los_Angeles:20260908T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260909-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260909T120000
+DTEND;TZID=America/Los_Angeles:20260909T180000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect Noon to 6 P.M. 
+ near Oracle Park.\n\nThis is the meter enforcement window\, not the event 
+ start time.\n\nDates and rate hours are subject to change by SFMTA.\nSourc
+ e: https://www.sfmta.com/notices/current-special-event-parking-regulations
+ -schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260911-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260911T180000
+DTEND;TZID=America/Los_Angeles:20260911T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260912-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260912T120000
+DTEND;TZID=America/Los_Angeles:20260912T180000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect Noon to 6 P.M. 
+ near Oracle Park.\n\nThis is the meter enforcement window\, not the event 
+ start time.\n\nDates and rate hours are subject to change by SFMTA.\nSourc
+ e: https://www.sfmta.com/notices/current-special-event-parking-regulations
+ -schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260913-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260913T150000
+DTEND;TZID=America/Los_Angeles:20260913T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 3 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260915-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260915T180000
+DTEND;TZID=America/Los_Angeles:20260915T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260921-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260921T180000
+DTEND;TZID=America/Los_Angeles:20260921T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260922-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260922T180000
+DTEND;TZID=America/Los_Angeles:20260922T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260923-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260923T120000
+DTEND;TZID=America/Los_Angeles:20260923T180000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect Noon to 6 P.M. 
+ near Oracle Park.\n\nThis is the meter enforcement window\, not the event 
+ start time.\n\nDates and rate hours are subject to change by SFMTA.\nSourc
+ e: https://www.sfmta.com/notices/current-special-event-parking-regulations
+ -schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260925-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260925T180000
+DTEND;TZID=America/Los_Angeles:20260925T220000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Oracle Park.\n\nThis is the meter enforcement window\, not the eve
+ nt start time.\n\nDates and rate hours are subject to change by SFMTA.\nSo
+ urce: https://www.sfmta.com/notices/current-special-event-parking-regulati
+ ons-schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260926-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260926T120000
+DTEND;TZID=America/Los_Angeles:20260926T180000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect Noon to 6 P.M. 
+ near Oracle Park.\n\nThis is the meter enforcement window\, not the event 
+ start time.\n\nDates and rate hours are subject to change by SFMTA.\nSourc
+ e: https://www.sfmta.com/notices/current-special-event-parking-regulations
+ -schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20260927-oracle@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20260927T120000
+DTEND;TZID=America/Los_Angeles:20260927T180000
+SUMMARY:Special event meter rates: Oracle Park
+DESCRIPTION:Special event parking meter rates are in effect Noon to 6 P.M. 
+ near Oracle Park.\n\nThis is the meter enforcement window\, not the event 
+ start time.\n\nDates and rate hours are subject to change by SFMTA.\nSourc
+ e: https://www.sfmta.com/notices/current-special-event-parking-regulations
+ -schedule
+LOCATION:Oracle Park
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+BEGIN:VEVENT
+UID:20261019-chase@nickfong.github.io
+DTSTAMP:20260726T160855Z
+LAST-MODIFIED:20260726T160855Z
+SEQUENCE:0
+DTSTART;TZID=America/Los_Angeles:20261019T180000
+DTEND;TZID=America/Los_Angeles:20261019T220000
+SUMMARY:Special event meter rates: Chase Center
+DESCRIPTION:Special event parking meter rates are in effect 6 P.M. to 10 P.
+ M. near Chase Center.\n\nThis is the meter enforcement window\, not the ev
+ ent start time.\n\nDates and rate hours are subject to change by SFMTA.\nS
+ ource: https://www.sfmta.com/notices/current-special-event-parking-regulat
+ ions-schedule
+LOCATION:Chase Center
+TRANSP:TRANSPARENT
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR
