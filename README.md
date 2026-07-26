@@ -126,7 +126,7 @@ app. The heartbeat is the guarantee; the ICS churn is a side effect.)
 2. **Enable GitHub Pages on `docs/`.**
 
    Settings → Pages → Build and deployment → Source: **Deploy from a branch** →
-   Branch: **`main`** (or whatever your default branch is), folder: **`/docs`**
+   Branch: **`master`**, folder: **`/docs`**
    → Save.
 
 3. **Generate an OAuth token.** On your own machine, signed in to Claude Code:
