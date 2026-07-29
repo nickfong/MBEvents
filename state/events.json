@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "last_success_utc": "2026-07-28T13:47:43Z",
-  "row_count": 50,
+  "last_success_utc": "2026-07-29T13:48:08Z",
+  "row_count": 48,
   "events": {
     "20260724-oracle": {
       "start": "2026-07-24T18:00:00",
@@ -75,6 +75,14 @@
       "sequence": 0,
       "last_modified": "20260726T160855Z"
     },
+    "20260802-chase": {
+      "start": "2026-08-02T18:00:00",
+      "end": "2026-08-02T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260729T134808Z"
+    },
     "20260802-oracle": {
       "start": "2026-08-02T12:00:00",
       "end": "2026-08-02T18:00:00",
@@ -90,6 +98,14 @@
       "hours": "6 P.M. to 10 P.M.",
       "sequence": 0,
       "last_modified": "20260726T160855Z"
+    },
+    "20260804-chase": {
+      "start": "2026-08-04T18:00:00",
+      "end": "2026-08-04T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260729T134808Z"
     },
     "20260804-oracle": {
       "start": "2026-08-04T18:00:00",
