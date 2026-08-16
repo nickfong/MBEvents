@@ -174,6 +174,28 @@ def infer_years(month_days: list[tuple[int, int]], effective: date) -> list[date
     return dates
 
 
+# --- quarantine -------------------------------------------------------------
+
+
+def partition_rows(rows: list[dict[str, str]]) -> tuple[list[dict[str, str]], list[tuple[int, dict[str, str]]]]:
+    """Split rows into (complete, quarantined-with-original-index).
+
+    A row goes to quarantine when any cell is blank after normalisation --
+    SFMTA does occasionally publish one. A row whose cells are all present but
+    *invalid* (unknown venue, unknown hours) is NOT quarantined; those still
+    fail the run in ``validate_rows``, because they need a deliberate whitelist
+    decision rather than a shrug.
+    """
+    complete: list[dict[str, str]] = []
+    quarantined: list[tuple[int, dict[str, str]]] = []
+    for index, row in enumerate(rows):
+        if all(normalize(row[key]) for key in ("date", "venue", "hours")):
+            complete.append(row)
+        else:
+            quarantined.append((index, row))
+    return complete, quarantined
+
+
 # --- top level --------------------------------------------------------------
 
 

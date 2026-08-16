@@ -175,10 +175,13 @@ def parse_rows(table_text: str, runner=run_claude) -> list[dict[str, str]]:
         if missing:
             raise ParseError(f"Row {index} is missing required key(s) {missing}: {row!r}")
         for key in ("date", "venue", "hours"):
-            if not isinstance(row[key], str) or not row[key].strip():
+            if not isinstance(row[key], str):
                 raise ParseError(
-                    f"Row {index} has an empty or non-string {key!r}: {row!r}\n"
-                    "Not substituting a default -- a blank cell is a source problem."
+                    f"Row {index} has a non-string {key!r}: {row!r}\n"
+                    "The model should transcribe cells as strings, blank ones included."
                 )
+            # A blank string is allowed through: SFMTA does occasionally publish
+            # a row with an empty cell, and the validation layer quarantines
+            # those explicitly rather than killing the whole publish here.
 
     return data

@@ -36,9 +36,10 @@ All of these exit 1. None is logged as a warning and skipped:
 - the schedule table cannot be found
 - the table has zero data rows
 - the parse step returns anything other than valid JSON in the expected shape
-- a date does not parse
-- a venue is not exactly `Oracle` or `Chase`
-- an hours string is not in the whitelist
+- a non-blank date does not parse
+- a non-blank venue is not exactly `Oracle` or `Chase`
+- a non-blank hours string is not in the whitelist
+- more than 3 rows have blank cells
 - the year inference is ambiguous
 - the row count fell by more than 40% since the last successful run
 - the OAuth token is missing or rejected
@@ -46,6 +47,26 @@ All of these exit 1. None is logged as a warning and skipped:
 Nothing is written on failure. The calendar is built in memory, re-parsed by
 `icalendar`, and only then written to disk, so a failed run leaves the last good
 `docs/sfmta-events.ics` and `state/events.json` in place.
+
+### Blank cells: quarantine
+
+SFMTA does occasionally publish a row with an empty cell (it happened on
+2026-08-16: a September date with blank hours). One typo'd cell should not stop
+the other 70+ rows from publishing, but it must never be silent either. So:
+
+- A row with a **blank** cell is quarantined. If the date and venue still name
+  an event published previously (and it is still in the future), it is carried
+  forward frozen at its last known values, so the blank does not read as a
+  cancellation. Otherwise the row is left out of this publish and appears once
+  SFMTA fixes the cell.
+- The run then exits **2**: the workflow commits the calendar first and fails
+  afterwards, so the feed updates *and* the failure email goes out. This
+  repeats daily until the cell is fixed or the date passes.
+- More than 3 blank rows is still exit 1 with nothing written — that is a
+  broken table, not a typo.
+- Only blanks are quarantined. A cell that is present but invalid (an unknown
+  hours window, a third venue) still fails the run, because it needs a
+  deliberate whitelist decision.
 
 ### Year inference
 
@@ -167,6 +188,8 @@ was.
 | `none of which has both an 'Event Date' and a 'Venue' column` | Schedule table gone or headings renamed. | Same. |
 | `The parse step did not return valid JSON` | Model returned prose or fences. Raw output is printed. | Re-run. If it repeats, tighten the prompt in `parse.py`. |
 | `rate hours '...' are not in the known whitelist` | New enforcement window. | Add it to `HOURS_WINDOWS`, with a test. |
+| `WARNING: ... rows ... have blank cells` (run red, calendar still updated) | SFMTA published a row with an empty cell. The rest published; the row was carried forward or left out, as the log says. | Nothing urgent. The email repeats daily until SFMTA fixes the cell or the date passes. |
+| `... rows have blank cells (quarantine limit is 3)` | Most of the table is blank — broken table or broken extraction. | Check the page; nothing was published. |
 | `venue '...' is not one of ['Chase', 'Oracle']` | Third venue appeared. | Add it to `VENUES` if wanted. |
 | `the month index decreased for a second time` | Table is no longer a single sub-twelve-month schedule in date order. | Check the page before trusting the inference. |
 | `inferred date ... falls outside the sane window` | Effective date and rows disagree. | Same. |

@@ -175,6 +175,70 @@ def test_archived_events_keep_their_sequence_when_the_page_moves_on(
     assert "DTSTART;TZID=America/Los_Angeles:20260602T120000" in ics_path.read_text(encoding="utf-8")
 
 
+def test_a_blank_cell_publishes_the_rest_and_exits_two(wired, parsed_rows, monkeypatch, capsys):
+    """The 2026-08-16 incident: SFMTA published a row with an empty hours cell.
+
+    The publish must go out without that row, and the run must still go red
+    (exit 2) so the failure email fires.
+    """
+    ics_path, state_path, heartbeat_path = wired
+    monkeypatch.setattr(main_mod, "today_pacific", lambda: date(2026, 6, 1))
+
+    broken = [dict(row) for row in parsed_rows]
+    broken.append({"date": "September 19", "venue": "Chase", "hours": ""})
+    monkeypatch.setattr(main_mod, "parse_rows", lambda _text: broken)
+
+    assert main_mod.main() == 2
+
+    text = ics_path.read_text(encoding="utf-8")
+    assert text.count("BEGIN:VEVENT") == 34, "the 34 good rows published"
+    assert "20260919-chase" not in text, "the blank row is not fabricated"
+    assert heartbeat_path.exists() and state_path.exists()
+
+    stderr = capsys.readouterr().err
+    assert "blank" in stderr
+    assert "September 19" in stderr
+    assert "row dropped" in stderr
+
+
+def test_a_blank_cell_on_a_known_event_is_carried_forward_frozen(
+    wired, parsed_rows, monkeypatch, capsys
+):
+    ics_path, state_path, _heartbeat = wired
+    monkeypatch.setattr(main_mod, "today_pacific", lambda: date(2026, 6, 1))
+
+    # First publish includes October 19 (Chase) with real hours.
+    assert main_mod.main() == 0
+
+    # SFMTA then blanks that row's hours cell.
+    revised = [dict(row) for row in parsed_rows]
+    revised[-1]["hours"] = ""  # October 19, Chase
+    monkeypatch.setattr(main_mod, "parse_rows", lambda _text: revised)
+
+    assert main_mod.main() == 2
+
+    text = ics_path.read_text(encoding="utf-8")
+    assert "20261019-chase" in text, "not treated as a cancellation"
+    assert "DTSTART;TZID=America/Los_Angeles:20261019T180000" in text, "frozen at last values"
+
+    record = json.loads(state_path.read_text(encoding="utf-8"))["events"]["20261019-chase"]
+    assert record["sequence"] == 0, "frozen, not bumped"
+    assert "carried forward" in capsys.readouterr().err
+
+
+def test_too_many_blank_rows_is_still_fatal(wired, parsed_rows, monkeypatch, capsys):
+    ics_path, state_path, heartbeat_path = wired
+
+    broken = [dict(row) for row in parsed_rows]
+    for row in broken[:4]:
+        row["hours"] = ""  # four blanks, over the limit of three
+    monkeypatch.setattr(main_mod, "parse_rows", lambda _text: broken)
+
+    assert main_mod.main() == 1
+    assert not ics_path.exists() and not state_path.exists() and not heartbeat_path.exists()
+    assert "quarantine limit" in capsys.readouterr().err
+
+
 def test_a_fetch_failure_leaves_the_previous_calendar_untouched(wired, monkeypatch, capsys):
     ics_path, state_path, heartbeat_path = wired
 

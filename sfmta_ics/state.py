@@ -186,6 +186,74 @@ def archived_events(previous: State, scraped_uids: set[str], today: date) -> lis
     return archived
 
 
+def carry_forward(
+    quarantined: list[tuple[int, dict]],
+    previous: State,
+    scraped_uids: set[str],
+    today: date,
+) -> tuple[list[Event], list[str]]:
+    """Salvage quarantined rows from the last published values where possible.
+
+    A quarantined row usually still names its date and venue (the blank cell is
+    typically the hours). If we previously published a *future* event for that
+    date and venue, re-emit it frozen -- otherwise dropping the row would look
+    like a cancellation to every subscriber, over what is probably a typo.
+
+    Past dates need no handling here: the archive re-emits those regardless.
+
+    Returns the carried events plus a human-readable note per quarantined row,
+    for the run log. Nothing here raises for a merely-unusable row; the caller
+    already capped how many rows may be quarantined at all.
+    """
+    from .validate import parse_month_day, validate_venue
+    from .errors import ValidationError
+
+    carried: list[Event] = []
+    notes: list[str] = []
+
+    for index, row in quarantined:
+        label = (
+            f"row {index} (date={row.get('date')!r}, venue={row.get('venue')!r}, "
+            f"hours={row.get('hours')!r})"
+        )
+        try:
+            month, day = parse_month_day(row["date"], index)
+            venue = validate_venue(row["venue"], index)
+        except ValidationError:
+            notes.append(f"{label}: date or venue is also unusable; row dropped from this publish.")
+            continue
+
+        candidates = []
+        for uid, record in previous.events.items():
+            try:
+                start = datetime.fromisoformat(record["start"])
+            except (TypeError, ValueError):
+                continue
+            if (
+                (start.month, start.day) == (month, day)
+                and uid.endswith("-" + venue.lower())
+                and start.date() >= today
+            ):
+                candidates.append((uid, record))
+
+        if not candidates:
+            notes.append(
+                f"{label}: no previously published future event matches; row dropped "
+                "from this publish. It will appear once SFMTA fixes the cell."
+            )
+        elif len(candidates) > 1:
+            notes.append(f"{label}: multiple state entries match ambiguously; row dropped.")
+        else:
+            uid, record = candidates[0]
+            if uid in scraped_uids:
+                notes.append(f"{label}: the page already carries a complete row for {uid}; blank duplicate ignored.")
+            else:
+                carried.append(_event_from_record(uid, record))
+                notes.append(f"{label}: carried forward frozen from the last published values ({uid}).")
+
+    return carried, notes
+
+
 def build_state(
     events,
     sequences: dict[str, int],

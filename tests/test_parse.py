@@ -45,9 +45,18 @@ def test_row_missing_a_key_is_a_failure():
         parse_rows("irrelevant", runner=stub('[{"date": "June 2", "venue": "Chase"}]'))
 
 
-def test_row_with_a_blank_field_is_not_defaulted():
-    payload = '[{"date": "June 2", "venue": "Chase", "hours": "  "}]'
-    with pytest.raises(ParseError, match="empty or non-string"):
+def test_a_blank_cell_passes_through_for_the_validator_to_quarantine():
+    # The parse layer transcribes; deciding what a blank cell means is the
+    # validation layer's job (quarantine, carry-forward, or a capped failure).
+    payload = '[{"date": "June 2", "venue": "Chase", "hours": ""}]'
+    assert parse_rows("irrelevant", runner=stub(payload)) == [
+        {"date": "June 2", "venue": "Chase", "hours": ""}
+    ]
+
+
+def test_a_non_string_field_is_still_fatal():
+    payload = '[{"date": "June 2", "venue": "Chase", "hours": null}]'
+    with pytest.raises(ParseError, match="non-string"):
         parse_rows("irrelevant", runner=stub(payload))
 
 

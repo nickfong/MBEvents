@@ -18,12 +18,19 @@ from zoneinfo import ZoneInfo
 
 from . import build as build_mod
 from . import state as state_mod
-from .config import HEARTBEAT_PATH, ICS_PATH, PAGES_HOSTNAME, STATE_PATH, TIMEZONE_ID
-from .errors import AUTH_REMEDY, AuthError, FatalError
+from .config import (
+    HEARTBEAT_PATH,
+    ICS_PATH,
+    MAX_QUARANTINED_ROWS,
+    PAGES_HOSTNAME,
+    STATE_PATH,
+    TIMEZONE_ID,
+)
+from .errors import AUTH_REMEDY, AuthError, FatalError, ValidationError
 from .extract import extract_effective_date, extract_table_text
 from .fetch import fetch_page
 from .parse import parse_rows
-from .validate import check_row_count, validate_rows
+from .validate import check_row_count, partition_rows, validate_rows
 
 
 def validate_ics(text: str, expected_uids: list[str]) -> None:
@@ -77,17 +84,40 @@ def run() -> int:
     table_text = extract_table_text(html)
 
     rows = parse_rows(table_text)
-    scraped = validate_rows(rows, effective)
+
+    # SFMTA occasionally publishes a row with a blank cell. Quarantine those
+    # instead of failing the whole publish -- but only a few, and never
+    # silently: the run exits 2 so the workflow still goes red and emails.
+    complete, quarantined = partition_rows(rows)
+    if len(quarantined) > MAX_QUARANTINED_ROWS:
+        raise ValidationError(
+            f"{len(quarantined)} of {len(rows)} rows have blank cells "
+            f"(quarantine limit is {MAX_QUARANTINED_ROWS}). That is a broken "
+            "table or a broken extraction, not a typo. Not publishing."
+        )
+
+    scraped = validate_rows(complete, effective)
     check_row_count(len(scraped), previous.row_count)
+
+    today = today_pacific()
+    scraped_uids = {event.uid_local for event in scraped}
+
+    # Quarantined rows that name a previously published future event are
+    # re-emitted frozen, so a typo'd cell does not read as a cancellation.
+    carried, quarantine_notes = (
+        state_mod.carry_forward(quarantined, previous, scraped_uids, today)
+        if quarantined
+        else ([], [])
+    )
 
     # SFMTA publishes a rolling window, so finished dates fall off the page.
     # Re-emit the past ones from the archive; let future removals disappear,
     # since those are cancellations.
-    today = today_pacific()
-    scraped_uids = {event.uid_local for event in scraped}
     archived = state_mod.archived_events(previous, scraped_uids, today)
 
-    events = sorted(archived + scraped, key=lambda e: (e.event_date, e.start_hour, e.venue))
+    events = sorted(
+        archived + carried + scraped, key=lambda e: (e.event_date, e.start_hour, e.venue)
+    )
 
     # Archived events reconstruct to exactly their own stored record, so both
     # helpers below return their frozen sequence and timestamp untouched.
@@ -117,9 +147,25 @@ def run() -> int:
     changed = sum(1 for event in events if sequences[event.uid_local] > 0)
     print(
         f"OK: effective {effective.isoformat()}, {len(scraped)} scraped + "
-        f"{len(archived)} archived = {len(events)} events "
+        f"{len(carried)} carried + {len(archived)} archived = {len(events)} events "
         f"({changed} with a non-zero SEQUENCE), written to {ICS_PATH}."
     )
+
+    if quarantined:
+        print(
+            f"\nWARNING: {len(quarantined)} row(s) in the source table have blank "
+            "cells. The calendar above was published anyway, handled as follows:",
+            file=sys.stderr,
+        )
+        for note in quarantine_notes:
+            print(f"  - {note}", file=sys.stderr)
+        print(
+            "\nExiting 2 so the workflow goes red after committing. This repeats "
+            "daily until SFMTA fixes the cell (or the row is past).",
+            file=sys.stderr,
+        )
+        return 2
+
     return 0
 
 

@@ -45,6 +45,7 @@ jobs:
         run: pytest -q
 
       - name: Build the calendar
+        id: build
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           PAGES_HOSTNAME: ${{ github.repository_owner }}.github.io
@@ -54,7 +55,19 @@ jobs:
           # it cannot be set, whatever the runner or the org config provides.
           unset ANTHROPIC_API_KEY
           unset ANTHROPIC_AUTH_TOKEN
+
+          # Exit 0: clean publish. Exit 2: published, but some source rows had
+          # blank cells and were quarantined -- commit the calendar, then fail
+          # the run afterwards so the email still goes out. Anything else: fail
+          # now, publishing nothing.
+          set +e
           python -m sfmta_ics.main
+          rc=$?
+          set -e
+          if [ "$rc" != "0" ] && [ "$rc" != "2" ]; then
+            exit "$rc"
+          fi
+          echo "rc=$rc" >> "$GITHUB_OUTPUT"
 
       - name: Commit the calendar and the heartbeat
         run: |
@@ -94,4 +107,13 @@ jobs:
             git pull --rebase --autostash || true
           done
           echo "Could not push after 5 attempts." >&2
+          exit 1
+
+      - name: Fail if rows were quarantined
+        if: steps.build.outputs.rc == '2'
+        run: |
+          echo "The calendar WAS published and committed, but the source table" >&2
+          echo "contains rows with blank cells -- see the 'Build the calendar'" >&2
+          echo "step log for exactly which rows and how each was handled." >&2
+          echo "This run is marked failed so the notification email goes out." >&2
           exit 1

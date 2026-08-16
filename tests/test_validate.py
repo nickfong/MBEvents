@@ -11,6 +11,7 @@ from sfmta_ics.validate import (
     check_row_count,
     infer_years,
     parse_month_day,
+    partition_rows,
     validate_hours,
     validate_rows,
     validate_venue,
@@ -153,6 +154,40 @@ def test_two_rows_with_the_same_date_and_venue_are_rejected():
 def test_zero_rows_raises_rather_than_building_an_empty_calendar():
     with pytest.raises(ValidationError, match="Zero rows"):
         validate_rows([], EFFECTIVE)
+
+
+# --- quarantine partition ---------------------------------------------------
+
+
+def test_a_blank_hours_cell_is_quarantined_not_fatal():
+    rows = [
+        {"date": "June 2", "venue": "Chase", "hours": "6 P.M. to 10 P.M."},
+        {"date": "September 19", "venue": "Chase", "hours": ""},
+    ]
+    complete, quarantined = partition_rows(rows)
+    assert complete == rows[:1]
+    assert quarantined == [(1, rows[1])]
+
+
+def test_whitespace_only_cells_count_as_blank():
+    rows = [{"date": "June 2", "venue": "   ", "hours": "6 P.M. to 10 P.M."}]
+    complete, quarantined = partition_rows(rows)
+    assert complete == [] and len(quarantined) == 1
+
+
+def test_complete_rows_are_never_quarantined(parsed_rows):
+    complete, quarantined = partition_rows(parsed_rows)
+    assert complete == parsed_rows and quarantined == []
+
+
+def test_a_present_but_invalid_value_is_still_fatal_not_quarantined():
+    # Quarantine is for blanks only. Garbage that is present must still fail,
+    # because it needs a whitelist decision, not a shrug.
+    rows = [{"date": "June 2", "venue": "Chase", "hours": "5 P.M. to 11 P.M."}]
+    complete, quarantined = partition_rows(rows)
+    assert quarantined == []
+    with pytest.raises(ValidationError, match="whitelist"):
+        validate_rows(complete, EFFECTIVE)
 
 
 # --- row-count floor --------------------------------------------------------

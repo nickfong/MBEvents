@@ -58,6 +58,11 @@ HOURS_TEXT = {
 # run is treated as a broken source, not a short schedule.
 MAX_ROW_COUNT_DROP = 0.40
 
+# A row with a blank cell is quarantined (published around, or carried forward
+# from state) rather than fatal -- but only up to this many. More blank rows
+# than this means the table itself is broken, not typo'd.
+MAX_QUARANTINED_ROWS = 3
+
 # Every inferred date must land inside [effective - 30d, effective + 400d].
 SANE_WINDOW_DAYS_BEFORE = 30
 SANE_WINDOW_DAYS_AFTER = 400
