@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "last_success_utc": "2026-08-13T13:41:21Z",
-  "row_count": 48,
+  "last_success_utc": "2026-08-17T13:25:22Z",
+  "row_count": 52,
   "events": {
     "20260724-oracle": {
       "start": "2026-07-24T18:00:00",
@@ -195,6 +195,14 @@
       "sequence": 0,
       "last_modified": "20260726T160855Z"
     },
+    "20260817-chase": {
+      "start": "2026-08-17T18:00:00",
+      "end": "2026-08-17T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260817T132522Z"
+    },
     "20260818-oracle": {
       "start": "2026-08-18T18:00:00",
       "end": "2026-08-18T22:00:00",
@@ -202,6 +210,14 @@
       "hours": "6 P.M. to 10 P.M.",
       "sequence": 0,
       "last_modified": "20260726T160855Z"
+    },
+    "20260819-chase": {
+      "start": "2026-08-19T18:00:00",
+      "end": "2026-08-19T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260817T132522Z"
     },
     "20260819-oracle": {
       "start": "2026-08-19T18:00:00",
@@ -211,6 +227,14 @@
       "sequence": 0,
       "last_modified": "20260726T160855Z"
     },
+    "20260820-chase": {
+      "start": "2026-08-20T18:00:00",
+      "end": "2026-08-20T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260817T132522Z"
+    },
     "20260820-oracle": {
       "start": "2026-08-20T12:00:00",
       "end": "2026-08-20T18:00:00",
@@ -218,6 +242,14 @@
       "hours": "Noon to 6 P.M.",
       "sequence": 0,
       "last_modified": "20260726T160855Z"
+    },
+    "20260821-chase": {
+      "start": "2026-08-21T18:00:00",
+      "end": "2026-08-21T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260817T132522Z"
     },
     "20260821-oracle": {
       "start": "2026-08-21T18:00:00",
@@ -323,6 +355,14 @@
       "sequence": 0,
       "last_modified": "20260726T160855Z"
     },
+    "20260909-chase": {
+      "start": "2026-09-09T18:00:00",
+      "end": "2026-09-09T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260817T132522Z"
+    },
     "20260909-oracle": {
       "start": "2026-09-09T12:00:00",
       "end": "2026-09-09T18:00:00",
@@ -363,6 +403,14 @@
       "sequence": 0,
       "last_modified": "20260726T160855Z"
     },
+    "20260918-chase": {
+      "start": "2026-09-18T18:00:00",
+      "end": "2026-09-18T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260817T132522Z"
+    },
     "20260921-oracle": {
       "start": "2026-09-21T18:00:00",
       "end": "2026-09-21T22:00:00",
@@ -395,6 +443,14 @@
       "sequence": 0,
       "last_modified": "20260726T160855Z"
     },
+    "20260926-chase": {
+      "start": "2026-09-26T18:00:00",
+      "end": "2026-09-26T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260817T132522Z"
+    },
     "20260926-oracle": {
       "start": "2026-09-26T12:00:00",
       "end": "2026-09-26T18:00:00",
@@ -411,6 +467,62 @@
       "sequence": 0,
       "last_modified": "20260726T160855Z"
     },
+    "20261003-chase": {
+      "start": "2026-10-03T18:00:00",
+      "end": "2026-10-03T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260817T132522Z"
+    },
+    "20261006-chase": {
+      "start": "2026-10-06T18:00:00",
+      "end": "2026-10-06T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260817T132522Z"
+    },
+    "20261007-chase": {
+      "start": "2026-10-07T18:00:00",
+      "end": "2026-10-07T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260817T132522Z"
+    },
+    "20261010-chase": {
+      "start": "2026-10-10T18:00:00",
+      "end": "2026-10-10T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260817T132522Z"
+    },
+    "20261011-chase": {
+      "start": "2026-10-11T18:00:00",
+      "end": "2026-10-11T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260817T132522Z"
+    },
+    "20261015-chase": {
+      "start": "2026-10-15T18:00:00",
+      "end": "2026-10-15T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260817T132522Z"
+    },
+    "20261016-chase": {
+      "start": "2026-10-16T18:00:00",
+      "end": "2026-10-16T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260817T132522Z"
+    },
     "20261019-chase": {
       "start": "2026-10-19T18:00:00",
       "end": "2026-10-19T22:00:00",
@@ -418,6 +530,62 @@
       "hours": "6 P.M. to 10 P.M.",
       "sequence": 0,
       "last_modified": "20260726T160855Z"
+    },
+    "20261027-chase": {
+      "start": "2026-10-27T18:00:00",
+      "end": "2026-10-27T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260817T132522Z"
+    },
+    "20261028-chase": {
+      "start": "2026-10-28T18:00:00",
+      "end": "2026-10-28T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260817T132522Z"
+    },
+    "20261030-chase": {
+      "start": "2026-10-30T18:00:00",
+      "end": "2026-10-30T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260817T132522Z"
+    },
+    "20261110-chase": {
+      "start": "2026-11-10T18:00:00",
+      "end": "2026-11-10T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260817T132522Z"
+    },
+    "20261125-chase": {
+      "start": "2026-11-25T18:00:00",
+      "end": "2026-11-25T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260817T132522Z"
+    },
+    "20261128-chase": {
+      "start": "2026-11-28T18:00:00",
+      "end": "2026-11-28T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260817T132522Z"
+    },
+    "20261225-chase": {
+      "start": "2026-12-25T18:00:00",
+      "end": "2026-12-25T22:00:00",
+      "venue": "Chase",
+      "hours": "6 P.M. to 10 P.M.",
+      "sequence": 0,
+      "last_modified": "20260817T132522Z"
     }
   }
 }
