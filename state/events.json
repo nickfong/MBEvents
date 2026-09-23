@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "last_success_utc": "2026-09-22T13:23:48Z",
-  "row_count": 26,
+  "last_success_utc": "2026-09-23T13:23:25Z",
+  "row_count": 21,
   "events": {
     "20260724-oracle": {
       "start": "2026-07-24T18:00:00",
@@ -458,14 +458,6 @@
       "hours": "6 P.M. to 10 P.M.",
       "sequence": 0,
       "last_modified": "20260726T160855Z"
-    },
-    "20260926-chase": {
-      "start": "2026-09-26T18:00:00",
-      "end": "2026-09-26T22:00:00",
-      "venue": "Chase",
-      "hours": "6 P.M. to 10 P.M.",
-      "sequence": 0,
-      "last_modified": "20260817T132522Z"
     },
     "20260926-oracle": {
       "start": "2026-09-26T12:00:00",
