@@ -73,6 +73,10 @@ def test_a_second_run_with_revised_hours_bumps_only_that_sequence(wired, parsed_
 
 def test_a_removed_event_is_pruned_from_state_and_calendar(wired, parsed_rows, monkeypatch):
     ics_path, state_path, _heartbeat = wired
+
+    # Pin "today" before every event, so the dropped Oct 19 row counts as a
+    # future removal; once that date passes it would be archived instead.
+    monkeypatch.setattr(main_mod, "today_pacific", lambda: date(2026, 6, 1))
     assert main_mod.main() == 0
 
     monkeypatch.setattr(main_mod, "parse_rows", lambda _text: parsed_rows[:-1])
